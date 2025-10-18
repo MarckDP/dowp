@@ -18,13 +18,7 @@ Está hecha a base de yt-dlp para el análisis y las descargas, y aprovecha el p
 
 - Además, el proyecto incluye una extensión para Adobe Premiere Pro y Adobe After Effects. Esta se conecta a la app principal para que puedas:
 
-
-
-
-
 ## Importar directamente a tu proyecto todos los medios que descargues (videos, audios, imágenes, subtítulos).
-
-
 
 - Enviarlos a tu línea de tiempo si lo ves necesario.
 
