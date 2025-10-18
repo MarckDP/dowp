@@ -1,6 +1,6 @@
 # DowP (App y Extensión)
 
-Este es solo el SetUp del DowP en conjunto de su extension, para una insatalacion rapida y sin problemas
+Este es solo el SetUp del [**DowP**](https://github.com/MarckDP/DowP_Downloader) en conjunto de su [**extensión**](https://github.com/MarckDP/DowP_Importer-Adobe), para una insatalacion rapida y sin problemas
 
 <div align="center">
   <img width="1500" height="500" alt="1500x500a" src="https://github.com/user-attachments/assets/2ad61b9d-a3c5-4268-a603-a19596b41f13" />
