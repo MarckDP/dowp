@@ -34,37 +34,7 @@ DowP es una interfaz gráfica (GUI) diseñada para simplificar el uso de **yt-dl
 
 ## Instalación
 
-### Requisitos del Sistema
-- [Python](https://www.python.org/downloads/)
-- Windows (Por ahora)
-
-### Proceso de Instalación
-
-#### 1. Instalación de Python
-1. Descarga Python desde el sitio oficial
-2. **IMPORTANTE**: Durante la instalación, marca la casilla "Add Python to PATH"
-3. Verifica la instalación abriendo CMD/Terminal y ejecutando:
-   ```bash
-   python --version
-   ```
-
-#### 2. Instalación de DowP
-
-**Método Automático (Recomendado)**
-- Ejecuta `main.py` o `run_dowp.bat`
-- El programa descargará automáticamente todas las dependencias necesarias
-
-**Método Manual**
-Si la instalación automática falla:
-```bash
-pip install -r requirements.txt
-```
-
-#### 3. FFmpeg
-FFmpeg se instala automáticamente. Si experimentas problemas:
-- Descarga [FFmpeg](https://www.gyan.dev/ffmpeg/builds/)
-- Instálalo en el PATH del sistema, o
-- Copia la carpeta `bin` a la carpeta del programa
+Solo instala la app y su extension desde el Set-Up, si no quieres que se instale la extensión, pueden desmarcar la opcion de "Instalar la extensión para Adobe (DowP Importer)" y ya, asi solo usan el DowP como app. 
 
 ---
 
