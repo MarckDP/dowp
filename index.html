@@ -1,78 +1,219 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Descargar DowP</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0d1117;
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    #download-btn {
-      background: #238636;
-      color: white;
-      text-decoration: none;
-      padding: 1em 2.5em;
-      border-radius: 8px;
-      font-size: 1.2rem;
-      transition: background 0.2s;
-      display: none;
-    }
-
-    #download-btn:hover {
-      background: #2ea043;
-    }
-
-    #status {
-      color: #999;
-      margin-bottom: 10px;
-    }
-  </style>
-</head>
-<body>
-  <h1>Descargar DowP</h1>
-  <p id="status">Buscando la versión más reciente...</p>
-  <a id="download-btn" href="#">Descargar DowP</a>
-
-  <script>
-    // Tu repositorio
-    const repo = "MarckDP/DowP_App_y_Extension";
-
-    // Consultar la última release mediante la API de GitHub
-    fetch(`https://api.github.com/repos/${repo}/releases/latest`)
-      .then(response => response.json())
-      .then(data => {
-        const asset = data.assets.find(a => a.name.endsWith(".exe"));
-        const status = document.getElementById("status");
-        const btn = document.getElementById("download-btn");
-
-        if (asset) {
-          btn.href = asset.browser_download_url;
-          btn.style.display = "inline-block";
-          status.textContent = `Versión ${data.tag_name}`;
-        } else {
-          status.textContent = "No se encontró un archivo .exe en la última versión.";
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DowP - Descarga y Procesa para Editores</title>
+    <meta name="description" content="DowP: La herramienta definitiva para descargar, procesar e importar videos directamente a Adobe Premiere Pro y After Effects.">
+    <!-- Cargar Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración personalizada de Tailwind con tus colores -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dowp: {
+                            bg: '#0D0D0D',
+                            darkest: '#025920',
+                            dark: '#03A62C',
+                            main: '#04BF33',
+                            accent: '#8ED943',
+                        }
+                    },
+                    fontFamily: {
+                        'mono-tech': ['"Fira Code"', '"Roboto Mono"', 'monospace'],
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
         }
-      })
-      .catch(error => {
-        console.error(error);
-        document.getElementById("status").textContent = "Error al obtener la versión.";
-      });
-  </script>
+    </script>
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body { background-color: #0D0D0D; color: #e5e7eb; }
+        .text-gradient {
+            background: linear-gradient(135deg, #04BF33 0%, #8ED943 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .retro-grid {
+            background-image: linear-gradient(rgba(4, 191, 51, 0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(4, 191, 51, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .btn-dowp {
+            background: linear-gradient(90deg, #03A62C 0%, #04BF33 100%);
+            box-shadow: 0 0 15px rgba(4, 191, 51, 0.3);
+            transition: all 0.3s ease;
+            color: #0D0D0D;
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+        }
+        .btn-dowp:hover { box-shadow: 0 0 30px rgba(4, 191, 51, 0.6); transform: translateY(-2px); }
+    </style>
+</head>
+<body class="font-sans retro-grid min-h-screen flex flex-col">
+
+    <!-- NAVBAR -->
+    <nav class="w-full py-4 px-6 md:px-12 flex justify-between items-center border-b border-dowp-darkest/50 backdrop-blur-sm fixed top-0 z-50 bg-dowp-bg/80">
+        <div class="font-mono-tech font-bold text-xl text-dowp-main tracking-wider">
+            > DowP_
+        </div>
+        <div class="flex gap-6 text-sm font-medium">
+            <a href="https://github.com/MarckDP/DowP_App_y_Extension" target="_blank" class="hover:text-dowp-main transition-colors">GitHub</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-24">
+        <!-- HERO -->
+        <section class="max-w-4xl mx-auto px-6 py-20 text-center md:py-32">
+            <!-- Badge de versión (ahora dinámico) -->
+            <div id="version-badge" class="inline-block mb-6 px-3 py-1 rounded-full bg-dowp-darkest/30 border border-dowp-dark/50 text-dowp-accent text-xs font-mono-tech">
+                v1.2.4 Stable Release
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight">
+                Descarga. Procesa. <br class="hidden md:block">
+                <span class="text-gradient">Importa a Adobe.</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                La herramienta "todo en uno" para editores de video. Descarga desde cualquier sitio, recodifica a ProRes/H.264 y envía los archivos directamente a tu línea de tiempo en Premiere Pro y After Effects.
+            </p>
+
+            <!-- Botones de Acción -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <!-- Botón Principal (ahora dinámico) -->
+                <a id="download-btn" href="https://github.com/MarckDP/DowP_App_y_Extension/releases/latest" class="btn-dowp px-8 py-4 rounded-lg font-bold flex items-center gap-2 group" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Descargar para Windows
+                </a>
+
+                <!-- Botón Secundario -->
+                <a href="#features" class="px-8 py-4 rounded-lg font-medium border border-dowp-dark text-dowp-main hover:bg-dowp-darkest/20 transition-all">
+                    ¿Cómo funciona?
+                </a>
+            </div>
+
+            <!-- Estado / info -->
+            <p id="status" class="mt-4 text-sm text-gray-600 font-mono-tech">Buscando la versión más reciente...</p>
+        </section>
+
+        <!-- Resto del contenido (sin cambios) -->
+        <section id="features" class="max-w-6xl mx-auto px-6 py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">Tu flujo de trabajo, acelerado.</h2>
+                <div class="w-20 h-1 bg-dowp-main mx-auto rounded-full opacity-50"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                <div class="md:col-span-8 md:row-span-2 group relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-dowp-dark to-dowp-accent rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="relative bg-dowp-bg border border-dowp-darkest rounded-xl overflow-hidden shadow-2xl">
+                        <div class="bg-[#1a1a1a] px-4 py-2 flex gap-2 border-b border-dowp-darkest/50">
+                            <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                            <span class="ml-4 text-xs text-gray-500 font-mono-tech">DowP.exe - Proceso Único</span>
+                        </div>
+                        <img src="https://placehold.co/800x500/0D0D0D/04BF33?text=Captura+App+Principal\n(Modo+Descarga)" alt="Interfaz principal de DowP" class="w-full h-auto opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                </div>
+
+                <div class="md:col-span-4 relative group mt-8 md:mt-0">
+                    <div class="absolute -inset-0.5 bg-gradient-to-br from-dowp-main to-dowp-darkest rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                    <div class="relative bg-dowp-bg border border-dowp-darkest rounded-lg overflow-hidden shadow-xl">
+                        <div class="bg-[#2d2d2d] px-3 py-1 text-xs text-gray-400 border-b border-black flex justify-between">
+                            <span>Panel de Adobe</span>
+                            <span>x</span>
+                        </div>
+                        <img src="https://placehold.co/400x300/1d1d1d/04BF33?text=Extension+CEP\n(Dentro+de+Premiere)" alt="Extensión de Adobe" class="w-full h-auto">
+                    </div>
+                     <p class="mt-3 text-sm text-gray-400 font-mono-tech">> Integración nativa con un clic.</p>
+                </div>
+
+                <div class="md:col-span-4 relative group">
+                    <div class="relative bg-dowp-bg border border-dowp-darkest/50 rounded-lg overflow-hidden shadow-xl opacity-80 hover:opacity-100 transition-opacity">
+                        <img src="https://placehold.co/400x250/0D0D0D/03A62C?text=Cola+de+Lotes\n(Batch+Processing)" alt="Procesamiento por lotes" class="w-full h-auto">
+                    </div>
+                     <p class="mt-3 text-sm text-gray-400 font-mono-tech">> Automatización de playlists.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-10 text-center text-gray-500 text-sm border-t border-dowp-darkest/30 mt-10">
+        <p>Desarrollado con <span class="text-dowp-dark">café</span> y Python.</p>
+        <p class="mt-2 font-mono-tech text-xs opacity-50">© 2025 DowP Project.</p>
+    </footer>
+
+    <!-- SCRIPT: Detectar la última release y asignar descarga -->
+    <script>
+        (function () {
+            const repo = "MarckDP/DowP_App_y_Extension";
+            const releasesPage = `https://github.com/${repo}/releases/latest`;
+            const statusEl = document.getElementById('status');
+            const btn = document.getElementById('download-btn');
+            const badge = document.getElementById('version-badge');
+
+            // Helpers de selección: prioriza archivos con 'dowp' o 'setup', luego cualquier .exe
+            function pickBestExe(assets) {
+                if (!assets || assets.length === 0) return null;
+                const exeAssets = assets.filter(a => a.name && a.name.toLowerCase().endsWith('.exe'));
+                if (exeAssets.length === 0) return null;
+                let found = exeAssets.find(a => /dowp/i.test(a.name));
+                if (found) return found;
+                found = exeAssets.find(a => /setup/i.test(a.name));
+                if (found) return found;
+                return exeAssets[0];
+            }
+
+            // Fetch a la API de GitHub (releases/latest)
+            fetch(`https://api.github.com/repos/${repo}/releases/latest`, { cache: "no-store" })
+                .then(response => {
+                    if (!response.ok) throw new Error("GitHub API response not OK: " + response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    // Actualizar badge con la etiqueta de la release si existe
+                    if (badge && data.tag_name) {
+                        badge.textContent = `${data.tag_name} • Release`;
+                    }
+
+                    const asset = pickBestExe(data.assets || []);
+                    if (asset) {
+                        btn.href = asset.browser_download_url;
+                        btn.style.display = "inline-flex";
+                        // Mostrar info en status
+                        statusEl.textContent = `Versión ${data.tag_name} — ${asset.name}`;
+                        // Sugerir descarga directa
+                        btn.setAttribute('download', '');
+                    } else {
+                        // No se encontró .exe en la última release
+                        statusEl.textContent = "No se encontró un instalador .exe en la última release.";
+                        btn.href = releasesPage;
+                        btn.style.display = "inline-flex";
+                        btn.textContent = "Ver releases";
+                    }
+                })
+                .catch(err => {
+                    console.error("Error fetch GitHub releases:", err);
+                    statusEl.textContent = "Error al obtener la última versión desde GitHub. Abre la página de releases.";
+                    // fallback: enlazar a la página de releases para que el usuario pueda descargar manualmente
+                    btn.href = releasesPage;
+                    btn.style.display = "inline-flex";
+                    btn.textContent = "Ir a releases";
+                });
+        })();
+    </script>
+
 </body>
 </html>
