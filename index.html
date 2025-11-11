@@ -31,6 +31,12 @@
 
     <style>
         body { background-color: #0D0D0D; color: #e5e7eb; }
+        .text-gradient-dp {
+            background: linear-gradient(135deg, #0465bf 0%, #5f43d9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
         .text-gradient {
             background: linear-gradient(135deg, #04BF33 0%, #8ED943 100%);
             -webkit-background-clip: text;
@@ -68,10 +74,14 @@
     <main class="flex-grow pt-24">
         <section class="max-w-4xl mx-auto px-6 py-20 text-center md:py-32">
             <div id="version-badge" class="inline-block mb-6 px-3 py-1 rounded-full bg-dowp-darkest/30 border border-dowp-dark/50 text-dowp-accent text-xs font-mono-tech">
-                v1.2.4 Stable Release
+                Cargando...
             </div>
+            <h1 class="text-5xl md:text-8xl font-black mb-6 tracking-tight">
+                <span class="text-gradient-dp">DowP</span>
+                
+            </h1>
 
-            <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight">
+            <h1 class="text-5xl md:text-6xl font-black mb-6 tracking-tight">
                 Descarga. Procesa. <br class="hidden md:block">
                 <span class="text-gradient">Importa a Adobe.</span>
             </h1>
@@ -81,12 +91,9 @@
             </p>
 
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a id="download-btn" href="https://github.com/MarckDP/DowP" class="btn-dowp px-8 py-4 rounded-lg font-bold flex items-center gap-2 group" style="display: none;">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                    Descargar para Windows
-                <a
+                <a id="download-btn" href="https://github.com/MarckDP/DowP" class="btn-dowp px-8 py-4 rounded-lg font-bold flex items-center gap-2 group">
+                    Buscando versión...
+                </a>
             </div>
         </section>
 
@@ -103,18 +110,30 @@
                 </div>
                 <div class="w-full md:w-1/2 space-y-6">
                     <div class="inline-block px-3 py-1 bg-dowp-darkest/30 border border-dowp-main/30 rounded-full text-dowp-main text-sm font-mono-tech mb-2">
-                        > Paso_01
+                        > Proceso Único
                     </div>
-                    <h3 class="text-3xl font-bold text-white">Título de la Primera Captura</h3>
+                    <h3 class="text-3xl font-bold text-white">Control total en cada descarga</h3>
                     <p class="text-gray-400 text-lg leading-relaxed">
-                        Aquí va la descripción detallada de la primera captura. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+                        Este es tu bisturí digital. Perfecto para cuando necesitas control granular sobre un solo video. En lugar de descargar a ciegas, este modo te permite inspeccionar, modificar y preparar tu archivo (ya sea de una URL o local) para que esté listo para editar en el momento en que toca tu disco.
                     </p>
                     <ul class="space-y-2 text-gray-500 font-mono-tech text-sm">
                         <li class="flex items-center gap-2">
-                            <span class="text-dowp-main">></span> Característica clave uno
+                            <span class="text-dowp-main">></span> Analiza y selecciona pistas individuales de video y audio.
                         </li>
                         <li class="flex items-center gap-2">
-                            <span class="text-dowp-main">></span> Característica clave dos
+                            <span class="text-dowp-main">></span> Guarda las miniaturas facilmente.
+                        </li>
+                         <li class="flex items-center gap-2">
+                            <span class="text-dowp-main">></span> Descarga solo fragmentos de tus  videos.
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-dowp-main">></span> Descarga y convierte los subtitulos.
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-dowp-main">></span> Recodifica a formatos de edición con presets.
+                        </li>
+                         <li class="flex items-center gap-2">
+                            <span class="text-dowp-main">></span> Importa y procesa tus archivos locales existentes.
                         </li>
                     </ul>
                 </div>
@@ -123,18 +142,24 @@
             <div class="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-20">
                 <div class="w-full md:w-1/2 space-y-6 md:text-right">
                     <div class="inline-block px-3 py-1 bg-dowp-darkest/30 border border-dowp-main/30 rounded-full text-dowp-main text-sm font-mono-tech mb-2">
-                        > Paso_02
+                        > Proceso por Lotes
                     </div>
-                    <h3 class="text-3xl font-bold text-white">Título de la Segunda Captura</h3>
+                    <h3 class="text-3xl font-bold text-white">Automatiza tu flujo de trabajo</h3>
                     <p class="text-gray-400 text-lg leading-relaxed">
-                        Descripción para la segunda parte del proceso. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                        Este modo está diseñado para la eficiencia. Ya sea que estés importando una playlist completa o procesando una carpeta de archivos de tu cámara, la cola de lotes te permite configurar todo una vez y dejar que DowP trabaje por ti.
                     </p>
                      <ul class="space-y-2 text-gray-500 font-mono-tech text-sm inline-block text-left">
                         <li class="flex items-center gap-2">
-                            <span class="text-dowp-main">></span> Función avanzada A
+                            <span class="text-dowp-main">></span> Analiza playlists o colecciones completas en cola.
                         </li>
                         <li class="flex items-center gap-2">
-                            <span class="text-dowp-main">></span> Función avanzada B
+                            <span class="text-dowp-main">></span> Importa múltiples archivos locales para recodificar.
+                        </li>
+                         <li class="flex items-center gap-2">
+                            <span class="text-dowp-main">></span> Aplica un preset global a toda la cola para consistencia.
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-dowp-main">></span> Auto-descarga tus URL's sin configurar nada más.
                         </li>
                     </ul>
                 </div>
@@ -151,20 +176,19 @@
                 </div>
                 <div class="max-w-2xl space-y-6">
                      <div class="inline-block px-3 py-1 bg-dowp-darkest/30 border border-dowp-main/30 rounded-full text-dowp-main text-sm font-mono-tech mb-2">
-                        > Paso_Final
-                    </div>
-                    <h3 class="text-3xl font-bold text-white">Título del Paso Final</h3>
-                    <p class="text-gray-400 text-lg leading-relaxed">
-                        Conclusión del flujo de trabajo. Esta imagen es más pequeña para destacar un detalle específico o el resultado final. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
-                    </p>
+                        > Extensión de Adobe
                 </div>
+                <h3 class="text-3xl font-bold text-white">Del navegador a tu timeline</h3>
+                <p class="text-gray-400 text-lg leading-relaxed mt-6">
+                    El panel "DowP Importer" se instala en Premiere Pro y After Effects, conectando la aplicación de escritorio directamente con tu proyecto. Olvídate de buscar archivos y arrastrarlos: tu contenido va de la web a tu línea de tiempo en un solo clic.
+                </p>
+                
             </div>
 
         </section>
     </main>
 
     <footer class="py-10 text-center text-gray-500 text-sm border-t border-dowp-darkest/30 mt-20 bg-dowp-bg/50 backdrop-blur-md">
-        <p>Desarrollado con <span class="text-dowp-dark">café</span> y Python.</p>
         <p class="mt-2 font-mono-tech text-xs opacity-50">© 2025 DowP Project.</p>
     </footer>
 
@@ -188,7 +212,6 @@
                 return exeAssets[0];
             }
 
-            // Fetch a GitHub
             fetch(`https://api.github.com/repos/${repo}/releases/latest`, { cache: "no-store" })
                 .then(response => {
                     if (!response.ok) throw new Error("GitHub API response not OK: " + response.status);
@@ -201,21 +224,23 @@
                     const asset = pickBestExe(data.assets || []);
                     if (asset) {
                         btn.href = asset.browser_download_url;
-                        btn.style.display = "inline-flex";
-                        statusEl.textContent = `Versión ${data.tag_name} — ${asset.name}`;
+
+                        btn.innerHTML = `
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Descargar para Windows
+                        `;
+                        
                         btn.setAttribute('download', '');
                     } else {
-                        statusEl.textContent = "No se encontró un instalador .exe en la última release.";
                         btn.href = releasesPage;
-                        btn.style.display = "inline-flex";
                         btn.textContent = "Ver releases";
                     }
                 })
                 .catch(err => {
                     console.error("Error fetch GitHub releases:", err);
-                    statusEl.textContent = "Error al obtener la última versión.";
                     btn.href = releasesPage;
-                    btn.style.display = "inline-flex";
                     btn.textContent = "Ir a releases";
                 });
         })();
